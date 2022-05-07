@@ -5,6 +5,8 @@ import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Day 11 Studied about BuildContext, 3 Trees and Constraints
+
 void main() {
   runApp(MyApp());
 }
