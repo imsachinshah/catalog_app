@@ -1,4 +1,5 @@
 import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -45,15 +46,52 @@ class _HomePageState extends State<HomePage> {
       )),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: (Catalog.items != null )
-            ? ListView.builder(
+        child: (Catalog.items != null)
+            ? GridView.builder(
+                padding: const EdgeInsets.only(top: 10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                    crossAxisCount: 2),
                 itemCount: Catalog.items!.length,
                 itemBuilder: (context, index) {
-                  return ItemWidget(
-                    item: Catalog.items![index],
+                  final item = Catalog.items![index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: GridTile(
+                      header: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                              color: Colors.deepPurple,
+                              borderRadius: BorderRadius.circular(6)),
+                          child: Text(
+                            item.name,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )),
+                      child: Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Image.network(item.image),
+                      ),
+                      footer: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(6)),
+                          child: Text(
+                            "\$${item.price}",
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ),
                   );
-                },
-              )
+                })
             : const Center(
                 child: CircularProgressIndicator(),
               ),
