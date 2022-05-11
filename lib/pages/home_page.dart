@@ -1,10 +1,8 @@
 import 'package:catalog_app/models/catalog.dart';
-import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import '../widgets/drawer.dart';
-import '../widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
