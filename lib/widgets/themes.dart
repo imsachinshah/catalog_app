@@ -9,9 +9,14 @@ class MyTheme {
           titleTextStyle: TextStyle(color: Colors.black),
           iconTheme: IconThemeData(color: Colors.black)),
       primarySwatch: Colors.deepPurple,
-      fontFamily: GoogleFonts.lato().fontFamily,
+      fontFamily: GoogleFonts.poppins().fontFamily,
       primaryTextTheme: GoogleFonts.latoTextTheme());
 
   static ThemeData darkTheme(BuildContext context) =>
       ThemeData(brightness: Brightness.dark);
+
+  // Colors
+
+  static Color creamColor = const Color(0xfff5f5f5);
+  static Color blueColor = const Color.fromARGB(255, 8, 35, 56);
 }
