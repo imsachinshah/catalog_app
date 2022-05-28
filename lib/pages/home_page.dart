@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:catalog_app/pages/home_details.dart';
+import 'package:catalog_app/widgets/home_widgets/catalog_header.dart';
+import 'package:catalog_app/widgets/home_widgets/catalog_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -7,7 +10,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:catalog_app/models/catalog.dart';
 import 'package:catalog_app/widgets/themes.dart';
 
-import '../widgets/drawer.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,6 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Item catalog;
     return Scaffold(
         backgroundColor: MyTheme.creamColor,
         body: SafeArea(
@@ -50,11 +54,12 @@ class _HomePageState extends State<HomePage> {
                 const CatalogHeader(),
                 10.heightBox,
                 if (Catalog.items != null && Catalog.items!.isNotEmpty)
-                  const CatalogList().expand()
+                  
+                  const CatalogList().py12().expand()
                 else
                   const Center(
                     child: CircularProgressIndicator(),
-                  )
+                  ).expand(),
               ],
             ),
           ),
@@ -62,94 +67,10 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl5.bold.color(MyTheme.blueColor).make(),
-        "Treanding Products".text.xl2.color(MyTheme.blueColor).make()
-      ],
-    );
-  }
-}
 
-class CatalogList extends StatelessWidget {
-  const CatalogList({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: Catalog.items!.length,
-        itemBuilder: (context, index) {
-          final catalog = Catalog.items![index];
-          return CatalogItem(catalog: catalog);
-        });
-  }
-}
 
-class CatalogItem extends StatelessWidget {
-  final Item catalog;
 
-  const CatalogItem({Key? key, required this.catalog}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return VxBox(
-        child: Row(
-      children: [
-        CatalogImage(image: catalog.image),
-        Expanded(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            catalog.name.text.lg.color(MyTheme.blueColor).bold.make(),
-            catalog.desc.text.textStyle(context.captionStyle!).make(),
-            10.heightBox,
-            ButtonBar(
-              alignment: MainAxisAlignment.spaceBetween,
-              buttonPadding: EdgeInsets.zero,
-              children: [
-                "\$${catalog.price}".text.bold.lg.make(),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(MyTheme.blueColor),
-                        shape:
-                            MaterialStateProperty.all(const StadiumBorder())),
-                    child: "Buy".text.make())
-              ],
-            ).pOnly(right: 10),
-          ],
-        ))
-      ],
-    )).white.roundedLg.square(130).make().pLTRB(6, 9, 6, 9);
-  }
-}
 
-class CatalogImage extends StatelessWidget {
-  final String image;
-  const CatalogImage({
-    Key? key,
-    required this.image,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(image)
-        .box
-        .rounded
-        .p8
-        .color(MyTheme.creamColor)
-        .make()
-        .p8()
-        .w32(context);
-  }
-}
