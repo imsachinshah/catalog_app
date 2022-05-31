@@ -2,14 +2,13 @@ import 'dart:convert';
 
 import 'package:catalog_app/widgets/home_widgets/catalog_header.dart';
 import 'package:catalog_app/widgets/home_widgets/catalog_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:catalog_app/models/catalog.dart';
 import 'package:catalog_app/widgets/themes.dart';
-
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -41,8 +40,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Item catalog;
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, "/cart"),
+          backgroundColor: MyTheme.blueColor,
+          child: const Icon(CupertinoIcons.cart),
+        ),
         backgroundColor: MyTheme.creamColor,
         body: SafeArea(
           child: Container(
@@ -53,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                 const CatalogHeader(),
                 10.heightBox,
                 if (Catalog.items != null && Catalog.items!.isNotEmpty)
-                  
                   const CatalogList().py12().expand()
                 else
                   const Center(
@@ -65,11 +67,3 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 }
-
-
-
-
-
-
-
-
