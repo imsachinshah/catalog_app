@@ -15,10 +15,10 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -29,17 +29,18 @@ class HomeDetailPage extends StatelessWidget {
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(MyTheme.blueColor),
                   shape: MaterialStateProperty.all(const StadiumBorder())),
-              child: "Add to Cart".text.make(),
+              child: "Add to Cart".text.white.lg.make(),
             ).wh(150, 50)
           ],
         ),
       ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        iconTheme: Theme.of(context).iconTheme,
       ),
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          bottom: false,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -58,27 +59,25 @@ class HomeDetailPage extends StatelessWidget {
                   arcType: VxArcType.CONVEY,
                   child: Container(
                     width: context.screenWidth,
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                     child: Column(
                       children: [
                         catalog.name.text.xl4
-                            .color(MyTheme.blueColor)
+                            .color(Theme.of(context).primaryColor)
                             .bold
                             .make(),
                         catalog.desc.text.xl
                             .textStyle(context.captionStyle!)
                             .make(),
                         10.heightBox,
-                        SingleChildScrollView(
-                          child: Expanded(
-                            flex: 0,
-                            child:
-                                "Magna dolores ipsum et eirmod est et, at eirmod dolor sit ut sanctus ut ea et sanctus. Et diam voluptua accusam ea eos, lorem sadipscing diam est ipsum accusam. Amet erat nonumy diam accusam dolor. Tempor elitr diam amet magna dolore aliquyam amet. No et takimata diam et. Dolore ut."
-                                    .text
-                                    .justify
-                                    .make()
-                                    .p24(),
-                          ),
+                        Expanded(
+                          flex: 0,
+                          child:
+                              "Magna dolores ipsum et eirmod est et, at eirmod dolor sit ut sanctus ut ea et sanctus. Et diam voluptua accusam ea eos, lorem sadipscing diam est ipsum accusam. Amet erat nonumy diam accusam dolor. Tempor elitr diam amet magna dolore aliquyam amet. No et takimata diam et. Dolore ut."
+                                  .text
+                                  .justify
+                                  .make()
+                                  .p24(),
                         ),
                       ],
                     ).py32(),

@@ -34,24 +34,30 @@ class CatalogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VxBox(
-        child: Row(
+            child: Row(
       children: [
         Hero(
-            tag: Key(catalog.id.toString()),
-            child: CatalogImage(image: catalog.image)),
+          tag: Key(catalog.id.toString()),
+          child: CatalogImage(
+            image: catalog.image,
+          ),
+        ),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catalog.name.text.lg.color(MyTheme.blueColor).bold.make(),
+            catalog.name.text.lg
+                .color(Theme.of(context).primaryColor)
+                .bold
+                .make(),
             catalog.desc.text.textStyle(context.captionStyle!).make(),
             10.heightBox,
             ButtonBar(
               alignment: MainAxisAlignment.spaceBetween,
               buttonPadding: EdgeInsets.zero,
               children: [
-                "\$${catalog.price}".text.bold.lg.make(),
+                "\$${catalog.price}".text.bold.xl2.make(),
                 ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -59,12 +65,17 @@ class CatalogItem extends StatelessWidget {
                             MaterialStateProperty.all(MyTheme.blueColor),
                         shape:
                             MaterialStateProperty.all(const StadiumBorder())),
-                    child: "Add to Cart".text.make())
+                    child: "Add to Cart".text.white.make())
               ],
             ).pOnly(right: 10),
           ],
         ))
       ],
-    )).white.roundedLg.square(130).make().pLTRB(6, 9, 6, 9);
+    ))
+        .color(Theme.of(context).cardColor)
+        .roundedLg
+        .square(130)
+        .make()
+        .pLTRB(6, 9, 6, 9);
   }
 }
