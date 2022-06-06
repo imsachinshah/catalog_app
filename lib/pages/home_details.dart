@@ -2,7 +2,7 @@ import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/models/catalog_model.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {

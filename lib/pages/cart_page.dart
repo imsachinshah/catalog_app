@@ -44,7 +44,13 @@ class _CartTotal extends StatelessWidget {
           width: 10,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Buying not Supported yet!"),
+              ),
+            );
+          },
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(MyTheme.blueColor),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -61,7 +67,7 @@ class _CartTotal extends StatelessWidget {
 }
 
 class _CartList extends StatefulWidget {
-  const _CartList({ Key? key }) : super(key: key);
+  const _CartList({Key? key}) : super(key: key);
 
   @override
   State<_CartList> createState() => __CartListState();

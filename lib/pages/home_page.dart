@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/models/catalog_model.dart';
 import 'package:catalog_app/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         await rootBundle.loadString('assets/files/catalog.json');
     final decodeData = jsonDecode(catalogJson);
     var productData = decodeData["products"];
-    Catalog.items =
+    CatalogModel.items =
         List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
     setState(() {});
   }
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const CatalogHeader(),
                 10.heightBox,
-                if (Catalog.items != null && Catalog.items!.isNotEmpty)
+                if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
                   const CatalogList().py12().expand()
                 else
                   const Center(

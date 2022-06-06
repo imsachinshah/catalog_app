@@ -3,7 +3,7 @@ import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../models/catalog.dart';
+import '../../models/catalog_model.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
@@ -13,9 +13,9 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: Catalog.items!.length,
+        itemCount: CatalogModel.items!.length,
         itemBuilder: (context, index) {
-          final catalog = Catalog.getByPositions(index);
+          final catalog = CatalogModel.items![index];
           return InkWell(
               onTap: () => Navigator.push(
                   context,

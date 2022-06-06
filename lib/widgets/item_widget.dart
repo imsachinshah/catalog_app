@@ -1,6 +1,6 @@
 
 
-import 'package:catalog_app/models/catalog.dart';
+import 'package:catalog_app/models/catalog_model.dart';
 import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 
