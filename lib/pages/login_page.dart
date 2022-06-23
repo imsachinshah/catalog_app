@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Username should not be Empty";
+                          return "Password should not be Empty";
                         } else if (value.length < 6) {
                           return "Password should be more than 6";
                         } else if (value.length > 12) {
