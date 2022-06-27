@@ -1,6 +1,4 @@
 import 'package:catalog_app/widgets/home_widgets/add_to_cart.dart';
-import 'package:catalog_app/widgets/themes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:catalog_app/models/catalog_model.dart';

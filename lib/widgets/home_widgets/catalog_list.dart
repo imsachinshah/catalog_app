@@ -2,9 +2,9 @@ import 'package:catalog_app/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'package:catalog_app/models/cart_model.dart';
+
 import 'package:catalog_app/pages/home_details.dart';
-import 'package:catalog_app/widgets/themes.dart';
+
 
 import '../../models/catalog_model.dart';
 import 'catalog_image.dart';
