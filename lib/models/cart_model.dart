@@ -1,13 +1,14 @@
+import 'package:catalog_app/core/my_store.dart';
 import 'package:catalog_app/models/catalog_model.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CartModel {
-  
   // static final cartModel = CartModel._internal();
 
   // CartModel._internal();
 
   // factory CartModel() => cartModel;
-  
+
   // catalog field
   late CatalogModel _catalog;
 
@@ -30,15 +31,38 @@ class CartModel {
   num get totalPrice =>
       items.fold(0, (total, current) => total + current.price);
 
-  // Add Items
+  
 
-  void add(Item item) {
-    _itemIds.add(item.id);
+  
+
+ 
+
+  
+}
+
+// Add Items
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+
+  @override
+  perform() {
+    store!.cart._itemIds.add(item.id);
+    throw UnimplementedError();
   }
+}
 
-  // Remove Items
 
-  void remove(Item item) {
-    _itemIds.remove(item.id);
+ // Remove Items
+class RemoveMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  RemoveMutation(this.item);
+
+  @override
+  perform() {
+    store!.cart._itemIds.remove(item.id);
+    throw UnimplementedError();
   }
 }
