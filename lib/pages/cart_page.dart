@@ -36,13 +36,18 @@ class _CartTotal extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Text(
-          "\$${_cart.totalPrice}",
-          style: TextStyle(
-            fontSize: 40,
-            color: Theme.of(context).primaryColor,
-          ),
-        ),
+        VxConsumer(
+          notifications: {},
+          mutations: {RemoveMutation},
+          builder: (context, _, status) {
+          return Text(
+            "\$${_cart.totalPrice}",
+            style: TextStyle(
+              fontSize: 40,
+              color: Theme.of(context).primaryColor,
+            ),
+          );
+        }),
         const SizedBox(
           width: 10,
         ),
@@ -74,7 +79,7 @@ class _CartList extends StatelessWidget {
   Widget build(BuildContext context) {
     VxState.watch(context, on: [RemoveMutation]);
     final CartModel _cart = (VxState.store as MyStore).cart;
-    final Item item;
+    
 
     return _cart.items.isEmpty
         ? const Center(
@@ -91,7 +96,6 @@ class _CartList extends StatelessWidget {
                 icon: const Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   RemoveMutation(_cart.items[index]);
-                  
                 },
               ),
               title: _cart.items[index].name.text.make(),
