@@ -1,14 +1,25 @@
+import 'package:catalog_app/utils/routes.dart';
 import 'package:catalog_app/widgets/home_widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import 'package:catalog_app/pages/home_details.dart';
 
 import '../../models/catalog_model.dart';
 import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
   const CatalogList({Key? key}) : super(key: key);
+
+  // Function to add ids in detail Url
+  
+  Future<void> _onTap(BuildContext context, index) {
+    final catalog = CatalogModel.items![index];
+    return context.vxNav.push(
+      Uri(path: MyRoutes.homeDetailsRoute, queryParameters: {
+        "id": catalog.id.toString(),
+      }),
+      params: catalog,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +30,11 @@ class CatalogList extends StatelessWidget {
             itemBuilder: (context, index) {
               final catalog = CatalogModel.items![index];
               return InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              HomeDetailPage(catalog: catalog))),
-                  child: CatalogItem(catalog: catalog));
-            })
+                onTap: () => _onTap(context, index),
+                child: CatalogItem(catalog: catalog),
+              );
+            },
+          )
         : GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, crossAxisSpacing: 20),
@@ -34,11 +43,7 @@ class CatalogList extends StatelessWidget {
             itemBuilder: (context, index) {
               final catalog = CatalogModel.items![index];
               return InkWell(
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              HomeDetailPage(catalog: catalog))),
+                  onTap: () => _onTap(context, index),
                   child: CatalogItem(catalog: catalog));
             });
   }
