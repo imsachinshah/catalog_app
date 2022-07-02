@@ -41,8 +41,6 @@ class _HomePageState extends State<HomePage> {
 
     // final catalogJson = response.body;
 
-    
-
     final catalogJson =
         await rootBundle.loadString('assets/files/catalog.json');
 
@@ -58,45 +56,45 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final _cart = (VxState.store as MyStore).cart;
     return Scaffold(
-        floatingActionButton: VxBuilder(
-            mutations: {AddMutation, RemoveMutation},
-            builder: (context, _, status) {
-              return FloatingActionButton(
-                onPressed: () => Navigator.pushNamed(context, "/cart"),
-                backgroundColor: MyTheme.blueColor,
-                child: const Icon(
-                  CupertinoIcons.cart,
-                  color: Colors.white,
-                ),
-              ).badge(
-                color: Colors.grey[500],
-                size: 22,
-                count: _cart.items.length,
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              );
-            }),
-        backgroundColor: Theme.of(context).canvasColor,
-        body: SafeArea(
-          child: Container(
-            padding: Vx.m16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CatalogHeader(),
-                10.heightBox,
-                if (CatalogModel.items != null &&
-                    CatalogModel.items!.isNotEmpty)
-                  const CatalogList().py12().expand()
-                else
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ).expand(),
-              ],
-            ),
+      floatingActionButton: VxBuilder(
+          mutations: {AddMutation, RemoveMutation},
+          builder: (context, _, status) {
+            return FloatingActionButton(
+              onPressed: () => Navigator.pushNamed(context, "/cart"),
+              backgroundColor: MyTheme.blueColor,
+              child: const Icon(
+                CupertinoIcons.cart,
+                color: Colors.white,
+              ),
+            ).badge(
+              color: Colors.grey[500],
+              size: 22,
+              count: _cart.items.length,
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            );
+          }),
+      backgroundColor: Theme.of(context).canvasColor,
+      body: SafeArea(
+        child: Container(
+          padding: Vx.m16,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CatalogHeader(),
+              10.heightBox,
+              if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
+                const CatalogList().py12().expand()
+              else
+                const Center(
+                  child: CircularProgressIndicator(),
+                ).expand(),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
