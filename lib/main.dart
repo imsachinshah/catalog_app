@@ -11,7 +11,7 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() {
   setPathUrlStrategy();
-  runApp(VxState(store: MyStore(), child: MyApp()));
+  runApp(VxState(store: MyStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       routerDelegate: VxNavigator(
         routes: {
           "/": (_, __) => const MaterialPage(child: LoginPage()),
-          MyRoutes.homeRoute: (_, __) => MaterialPage(child: HomePage()),
+          MyRoutes.homeRoute: (_, __) => const MaterialPage(child: HomePage()),
           MyRoutes.homeDetailsRoute: (uri, params) {
             // final catalog = (VxState.store as MyStore).catalog.getById(
             //        int.parse(uri.queryParameters["id"]),

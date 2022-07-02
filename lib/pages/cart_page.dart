@@ -1,6 +1,6 @@
 import 'package:catalog_app/core/my_store.dart';
 import 'package:catalog_app/models/cart_model.dart';
-import 'package:catalog_app/models/catalog_model.dart';
+
 import 'package:catalog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -37,8 +37,8 @@ class _CartTotal extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         VxConsumer(
-          notifications: {},
-          mutations: {RemoveMutation},
+          notifications: const {},
+          mutations: const {RemoveMutation},
           builder: (context, _, status) {
           return Text(
             "\$${_cart.totalPrice}",
