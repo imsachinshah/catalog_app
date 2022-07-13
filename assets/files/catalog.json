@@ -14,7 +14,9 @@
             "desc": "Google Pixel phone 5th generation",
             "price": 699,
             "color": "#00ac51",
+
             "image": "https://i.gadgets360cdn.com/products/large/Pixel-5-DB-369x800-1601538019.jpg?downsize=*:420&output-quality=80"
+
         },
         {
             "id": 3,
@@ -22,7 +24,9 @@
             "desc": "Apple Macbook air with apple silicon",
             "price": 1099,
             "color": "#e0bfae",
+
             "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/macbook-air-gallery3-20201110?wid=2000&hei=1536&fmt=jpeg&qlt=95&.v=1632937845000"
+
         },
         {
             "id": 4,
