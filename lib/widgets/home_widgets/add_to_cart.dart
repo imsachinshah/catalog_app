@@ -18,20 +18,22 @@ class AddToCart extends StatelessWidget {
   Widget build(BuildContext context) {
     VxState.watch(context, on: [AddMutation, RemoveMutation]);
     final CartModel _cart = (VxState.store as MyStore).cart;
-    
+
     bool isInCart = _cart.items.contains(catalog);
     return ElevatedButton(
         onPressed: () {
           if (!isInCart) {
             AddMutation(catalog);
-
           }
         },
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(MyTheme.blueColor),
             shape: MaterialStateProperty.all(const StadiumBorder())),
         child: isInCart
-            ? const Icon(Icons.done)
+            ? const Icon(
+                Icons.done,
+                color: Colors.white,
+              )
             : "Add to Cart".text.white.make());
   }
 }

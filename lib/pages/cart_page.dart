@@ -13,7 +13,10 @@ class CartPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text("Cart"),
+          title: const Text(
+            "Cart",
+            textScaleFactor: 1.4,
+          ),
         ),
         body: Column(
           children: [
@@ -37,17 +40,17 @@ class _CartTotal extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         VxConsumer(
-          notifications: const {},
-          mutations: const {RemoveMutation},
-          builder: (context, _, status) {
-          return Text(
-            "\$${_cart.totalPrice}",
-            style: TextStyle(
-              fontSize: 40,
-              color: Theme.of(context).primaryColor,
-            ),
-          );
-        }),
+            notifications: const {},
+            mutations: const {RemoveMutation},
+            builder: (context, _, status) {
+              return Text(
+                "\$${_cart.totalPrice}",
+                style: TextStyle(
+                  fontSize: 40,
+                  color: Theme.of(context).primaryColor,
+                ),
+              );
+            }),
         const SizedBox(
           width: 10,
         ),
@@ -66,9 +69,10 @@ class _CartTotal extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50)))),
           child: const Text(
             "Buy",
+            textScaleFactor: 1.2,
             style: TextStyle(color: Colors.white),
           ),
-        ).w32(context),
+        ).w32(context).h(50),
       ],
     );
   }
@@ -79,7 +83,6 @@ class _CartList extends StatelessWidget {
   Widget build(BuildContext context) {
     VxState.watch(context, on: [RemoveMutation]);
     final CartModel _cart = (VxState.store as MyStore).cart;
-    
 
     return _cart.items.isEmpty
         ? const Center(
