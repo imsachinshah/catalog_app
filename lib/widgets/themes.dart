@@ -8,6 +8,7 @@ class MyTheme {
         cardColor: Colors.white,
         textTheme: const TextTheme(
             titleMedium: TextStyle(
+              
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 8, 35, 56))),
         buttonTheme: ButtonThemeData(buttonColor: blueColor),

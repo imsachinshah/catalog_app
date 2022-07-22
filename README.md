@@ -1,16 +1,47 @@
-# catalog_app
+# Developer's Store
 
-A new Flutter project.
+A new Flutter project which shows the the essential tools used buy Developers with beautiful UI and Dark Mode.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- It fetch data from JSON and show it in on the app.
+- It shows product detail in the product detail page.
+- It has cart page for adding items in cart.
+- It calulate the cart total price and shows it.
+- It has feature to remove items from cart.
+- It changes the app theme according to system.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Pages
+
+- Login Page
+- Home Page
+- Detail Page
+- Cart Page
+
+## Plateform Supported
+
+- Android
+- iOS
+- Web
+
+## Packages Used
+
+- cupertino_icons
+- google_fonts
+- velocity_x
+- http
+- url_strategy
+
+## Please Share your Feedback here
+
+- LinkedIn: [Sachin Shah](https://linkedin.com/in/imsachinshah)
+- Twitter: [Sachin Shah](https://twitter.com/imsachinshah0)
+
+## Reference
+
+- A Flutter Tutorial Course on Youtube by @iampawan
+
+
